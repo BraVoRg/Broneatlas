@@ -88,6 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обработчик событий клавиатуры
     document.addEventListener('keydown', (event) => {
+        // Проверяем, находится ли фокус на текстовом поле
+        const isTextInputFocused = document.activeElement.tagName === 'INPUT' || 
+                                  document.activeElement.tagName === 'TEXTAREA';
+
+        // Если фокус на текстовом поле, игнорируем перелистывание
+        if (isTextInputFocused) {
+            return;
+        }
+
         // Стрелка влево: переход к предыдущему изображению
         if (event.key === 'ArrowLeft') {
             goToPrevImage();
